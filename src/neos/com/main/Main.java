@@ -15,6 +15,20 @@ public class Main {
 
         // Gọi phương thức sắp xếp hàng tăng dân
         matrixFun.sapXepHangTangDan();
-        matrixFun.printMatrix();
+
+        // Gọi phương thức sắp xếp cột đầu tiên tăng dân
+        matrixFun.sapXepCotDauTienTangDan();
+
+        // Gọi phương thức sắp xếp đường chéo trái tăng dần
+        matrixFun.sapXepDuongCheoTraiTangDan();
+
+        // Gọi phương thức sắp xếp đường chéo phải tăng dần
+        matrixFun.sapXepDuongCheoPhaiTangDan();
+
+        // Gọi phương thức in ra cột có tổng lớn nhất
+        matrixFun.inRaCotTongLonNhat();
+
+        // Gọi phương thức in ra cột có tổng lớn nhất
+        matrixFun.sapXepCacCot();
     }
 }
