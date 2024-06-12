@@ -194,7 +194,7 @@ public class MatrixFun {
 
         //
         int[][] newMatrix = new int[matrix.length][];
-        for (int j = 0; j < matrix[0].length; i++) {
+        for (int j = 0; j < matrix[0].length; j++) {
             for (int i = 0; i < matrix.length; i++) {
 //                newMatrix[i][j] = Arrays.copyOf(matrix[i][j], matrix[i].length);
 //                Arrays.sort(newMatrix[i]);
