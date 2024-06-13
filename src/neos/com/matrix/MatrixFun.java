@@ -159,7 +159,8 @@ public class MatrixFun {
     public void sapXepCacCot() {
         int rows = matrix.length;
         int cols = matrix[0].length;
-        int[][] columnSums = new int[cols][2];
+        int[] columnSums = new int[cols];
+        int[] columnIndex = new int[cols];
 
         System.out.println("\nSắp xếp cột theo chiều tăng dần của tổng các phần tử");
 
@@ -170,36 +171,46 @@ public class MatrixFun {
                 sum += matrix[i][j];
             }
 
-            columnSums[j][0] = sum;
-            columnSums[j][1] = j;
+            columnSums[j] = sum;
+            columnIndex[j] = j;
         }
 
         // sắp xếp dãy cột tổng
-        System.out.println("Dãy sau khi sắp xếp");
+        System.out.println("Dãy trước khi sắp xếp");
+        System.out.println(Arrays.toString(columnSums));
+        System.out.println(Arrays.toString(columnIndex));
 
         for (int i = 0; i < columnSums.length; i++) {
             for (int j = i + 1; j < columnSums.length; j++) {
+                if (columnSums[i] > columnSums[j]) {
+                    int tmp = columnSums[i];
+                    columnSums[i] = columnSums[j];
+                    columnSums[j] = tmp;
 
-                if (columnSums[i][0] > columnSums[j][0]) {
-                    int tmp = columnSums[i][0];
-                    columnSums[i][0] = columnSums[j][0];
-                    columnSums[j][0] = tmp;
-
-                    int tmpIndex = columnSums[i][1];
-                    columnSums[i][1] = columnSums[j][1];
-                    columnSums[j][1] = tmpIndex;
+                    int tmpIndex = columnIndex[i];
+                    columnIndex[i] = columnIndex[j];
+                    columnIndex[j] = tmpIndex;
                 }
             }
         }
 
-        //
-        int[][] newMatrix = new int[matrix.length][];
-        for (int j = 0; j < matrix[0].length; j++) {
+        // sắp sắp côt tăng dần theo tổng
+        int[][] newMatrix = new int[matrix.length][matrix.length];
+
+        for (int j = 0; j < columnIndex.length; j++) {
+            int targetColumn = columnIndex[j];
+
             for (int i = 0; i < matrix.length; i++) {
-//                newMatrix[i][j] = Arrays.copyOf(matrix[i][j], matrix[i].length);
-//                Arrays.sort(newMatrix[i]);
-//                System.out.println(Arrays.toString(newMatrix[i]));
+                int indexCol = 0;
+                newMatrix[i][indexCol] = matrix[i][targetColumn];
+
+                indexCol++;
             }
+        }
+
+        System.out.println("Dãy sau khi sắp xếp");
+        for (int i = 0; i < newMatrix.length; i++) {
+            System.out.println(Arrays.toString(newMatrix[i]));
         }
     }
 }
