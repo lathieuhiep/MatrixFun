@@ -139,8 +139,6 @@ public class MatrixFun {
         findMax( columnTotals );
     }
 
-
-
     public void findMax(int[] arrInt) {
         int max = arrInt[0];
         int index = 0;
